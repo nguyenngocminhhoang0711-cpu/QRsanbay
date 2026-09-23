@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MobiFone VIP - Phòng Chờ Sân Bay Liên Khương</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mobiblue: '#003f87',
+                        mobired: '#d32f2f',
+                        goldaccent: '#c99a3f',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+            color: #e0e0e0;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(201, 154, 63, 0.3);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(201, 154, 63, 0.5);
+        }
+        .smooth-transition {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .modal-backdrop {
+            animation: backdropFade 0.3s ease-out;
+        }
+        @keyframes backdropFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal-content {
+            animation: slideUp 0.3s ease-out;
+        }
+        @keyframes slideUp {
+            from { 
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to { 
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="h-dvh flex flex-col overflow-hidden">
+
+    <!-- Header -->
+    <header class="bg-mobiblue/95 backdrop-blur border-b border-goldaccent/20 px-3 sm:px-4 py-2.5 sm:py-3 sticky top-0 z-50 shadow-lg">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+                <div class="w-9 sm:w-10 h-9 sm:h-10 rounded-lg bg-goldaccent/10 border border-goldaccent/30 flex items-center justify-center flex-shrink-0">
+                    <span class="font-bold text-goldaccent text-xs sm:text-sm">M</span>
+                </div>
+                <div class="min-w-0">
+                    <h1 class="text-white font-semibold text-sm sm:text-base leading-tight truncate">MobiFone VIP</h1>
+                    <p class="text-goldaccent/70 text-xs truncate">Liên Khương Airport</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-goldaccent/10 border border-goldaccent/20 flex-shrink-0">
+                <i class="fa-solid fa-crown text-goldaccent text-xs"></i>
+                <span class="text-white font-medium text-xs whitespace-nowrap">Premium</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col bg-gradient-to-b from-slate-900 to-slate-950">
+        
+        <!-- Location Badge -->
+        <div class="bg-gradient-to-r from-mobiblue/30 to-slate-900/30 backdrop-blur-sm px-3 sm:px-4 py-2 sm:py-2.5 text-center border-b border-mobiblue/20">
+            <div class="flex items-center justify-center gap-2 text-xs sm:text-sm text-slate-300 flex-wrap">
+                <i class="fa-solid fa-plane text-goldaccent text-sm flex-shrink-0"></i>
+                <span class="truncate">SH Premium Lounge • Ga Quốc Nội • Tầng 2</span>
+            </div>
+        </div>
+
+        <!-- Canva Embed -->
+        <div class="flex-1 relative w-full" style="min-height: 400px;">
+            <iframe loading="lazy" 
+                class="w-full h-full border-0"
+                src="https://www.canva.com/design/DAHVatdxLwU/FX4zhnbdfvEpKJwOt0NP9w/view?embed" 
+                allowfullscreen="allowfullscreen" 
+                allow="fullscreen"
+                title="MobiFone VIP Lounge Design">
+            </iframe>
+        </div>
+    </main>
+
+    <!-- Action Bar -->
+    <nav class="bg-slate-900/98 backdrop-blur border-t border-slate-800 px-3 sm:px-4 py-3 sm:py-4 shadow-2xl">
+        <div class="w-full">
+            <div class="grid grid-cols-3 gap-2 sm:gap-3 mb-3">
+                <!-- Check-in Guide Button -->
+                <button onclick="openModal('guideline')" class="smooth-transition group flex flex-col items-center justify-center gap-1.5 sm:gap-2 p-2.5 sm:p-3 rounded-xl bg-gradient-to-br from-mobiblue/20 to-mobiblue/10 hover:from-mobiblue/30 hover:to-mobiblue/20 border border-mobiblue/30 hover:border-mobiblue/50 active:scale-95 min-h-[80px] sm:min-h-[90px]">
+                    <div class="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-mobiblue/30 flex items-center justify-center group-hover:bg-mobiblue/40 smooth-transition">
+                        <i class="fa-solid fa-circle-check text-goldaccent text-xs sm:text-sm"></i>
+                    </div>
+                    <span class="text-white font-semibold text-xs sm:text-sm text-center leading-tight line-clamp-2">Quy Trình<br class="hidden sm:block" />Check-in</span>
+                </button>
+
+                <!-- Lounge Info Button -->
+                <button onclick="openModal('loungeInfo')" class="smooth-transition group flex flex-col items-center justify-center gap-1.5 sm:gap-2 p-2.5 sm:p-3 rounded-xl bg-gradient-to-br from-amber-600/20 to-amber-600/10 hover:from-amber-600/30 hover:to-amber-600/20 border border-amber-600/30 hover:border-amber-600/50 active:scale-95 min-h-[80px] sm:min-h-[90px]">
+                    <div class="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-amber-600/30 flex items-center justify-center group-hover:bg-amber-600/40 smooth-transition">
+                        <i class="fa-solid fa-info text-goldaccent text-xs sm:text-sm"></i>
+                    </div>
+                    <span class="text-white font-semibold text-xs sm:text-sm text-center leading-tight line-clamp-2">Thông Tin<br class="hidden sm:block" />Phòng Chờ</span>
+                </button>
+
+                <!-- Support Button -->
+                <a href="tel:18001090" class="smooth-transition group flex flex-col items-center justify-center gap-1.5 sm:gap-2 p-2.5 sm:p-3 rounded-xl bg-gradient-to-br from-slate-700/40 to-slate-700/20 hover:from-slate-700/60 hover:to-slate-700/40 border border-slate-700/40 hover:border-slate-600/60 active:scale-95 min-h-[80px] sm:min-h-[90px]">
+                    <div class="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-slate-700/40 flex items-center justify-center group-hover:bg-slate-700/60 smooth-transition">
+                        <i class="fa-solid fa-headset text-goldaccent text-xs sm:text-sm"></i>
+                    </div>
+                    <span class="text-white font-semibold text-xs sm:text-sm text-center leading-tight line-clamp-2">1800<br class="hidden sm:block" />.1090</span>
+                </a>
+            </div>
+            
+            <!-- Footer Info -->
+            <div class="text-center pt-2 sm:pt-3 border-t border-slate-800">
+                <p class="text-slate-500 text-xs font-light tracking-wide">MobiFone VIP Lounge Liên Khương • Lâm Đồng</p>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Modal -->
+    <div id="actionModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4 modal-backdrop">
+        <div class="bg-slate-800 border border-slate-700 w-full max-w-sm sm:max-w-md rounded-2xl shadow-2xl overflow-hidden modal-content max-h-[90vh] flex flex-col">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-mobiblue/20 to-slate-800 px-4 sm:px-5 py-3 sm:py-4 border-b border-slate-700 flex items-center justify-between flex-shrink-0">
+                <div id="modalTitle" class="flex items-center gap-2 min-w-0">
+                    <i class="fa-solid fa-circle-check text-goldaccent flex-shrink-0"></i>
+                    <h2 class="text-white font-semibold text-sm sm:text-base truncate">Modal Title</h2>
+                </div>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white smooth-transition w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-700/50 flex-shrink-0 ml-2">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Content -->
+            <div id="modalContent" class="p-4 sm:p-5 overflow-y-auto flex-1 text-sm sm:text-base">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(type) {
+            const modal = document.getElementById('actionModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            
+            if (type === 'guideline') {
+                title.innerHTML = `
+                    <i class="fa-solid fa-circle-check text-goldaccent"></i>
+                    <h2 class="text-white font-semibold text-sm sm:text-base">Quy Trình Check-in</h2>
+                `;
+                content.innerHTML = `
+                    <p class="text-slate-300 text-xs sm:text-sm mb-4 leading-relaxed">
+                        Những bước để vào phòng chờ VIP dành cho Hội viên Kết Nối Dài Lâu tại Liên Khương.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex gap-3">
+                            <div class="flex-shrink-0">
+                                <div class="flex h-7 sm:h-8 w-7 sm:w-8 items-center justify-center rounded-full bg-mobiblue text-white font-semibold text-xs sm:text-sm">1</div>
+                            </div>
+                            <div class="min-w-0">
+                                <h4 class="text-white font-semibold text-xs sm:text-sm mb-0.5">Xuất trình thẻ</h4>
+                                <p class="text-slate-400 text-xs leading-relaxed">Cung cấp Boarding Pass và mã QR hội viên từ app My MobiFone cho nhân viên quầy tiếp.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="flex-shrink-0">
+                                <div class="flex h-7 sm:h-8 w-7 sm:w-8 items-center justify-center rounded-full bg-mobiblue text-white font-semibold text-xs sm:text-sm">2</div>
+                            </div>
+                            <div class="min-w-0">
+                                <h4 class="text-white font-semibold text-xs sm:text-sm mb-0.5">Xác thực hạng thẻ</h4>
+                                <p class="text-slate-400 text-xs leading-relaxed">Nhân viên kiểm tra hạng Titan, Vàng, hoặc Kim Cương và xác nhận quyền hưởng dịch vụ.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="flex-shrink-0">
+                                <div class="flex h-7 sm:h-8 w-7 sm:w-8 items-center justify-center rounded-full bg-goldaccent text-black font-semibold text-xs sm:text-sm">3</div>
+                            </div>
+                            <div class="min-w-0">
+                                <h4 class="text-white font-semibold text-xs sm:text-sm mb-0.5">Tận hưởng dịch vụ</h4>
+                                <p class="text-slate-400 text-xs leading-relaxed">Vào phòng chờ, thư giãn với buffet, trà/cà phê, và WiFi tốc độ cao cho đến giờ bay.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-slate-900/50 rounded-lg border border-slate-700">
+                        <p class="text-slate-300 text-xs"><span class="font-semibold text-goldaccent">Lưu ý:</span> Vui lòng đến sân bay ít nhất 2 giờ trước giờ cất cánh.</p>
+                    </div>
+                `;
+            } else if (type === 'loungeInfo') {
+                title.innerHTML = `
+                    <i class="fa-solid fa-info text-goldaccent"></i>
+                    <h2 class="text-white font-semibold text-sm sm:text-base">Thông Tin Phòng Chờ</h2>
+                `;
+                content.innerHTML = `
+                    <h3 class="text-white font-semibold text-xs sm:text-sm mb-4">SH Premium Lounge Liên Khương</h3>
+                    <div class="space-y-3">
+                        <div class="p-3 bg-slate-900/50 rounded-lg border border-slate-700">
+                            <div class="flex items-start gap-2 mb-2">
+                                <i class="fa-solid fa-map-pin text-goldaccent text-xs sm:text-sm mt-0.5 flex-shrink-0"></i>
+                                <div class="min-w-0">
+                                    <h4 class="text-white font-semibold text-xs mb-1">Vị trí</h4>
+                                    <p class="text-slate-300 text-xs leading-relaxed">Tầng 2, Khu cách ly ga đi quốc nội, cửa ra tàu bay số 1 & 2, HKQT Liên Khương.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-3 bg-slate-900/50 rounded-lg border border-slate-700">
+                            <div class="flex items-start gap-2 mb-2">
+                                <i class="fa-solid fa-clock text-goldaccent text-xs sm:text-sm mt-0.5 flex-shrink-0"></i>
+                                <div class="min-w-0">
+                                    <h4 class="text-white font-semibold text-xs mb-1">Giờ phục vụ</h4>
+                                    <p class="text-slate-300 text-xs">05:30 – 21:00 hàng ngày</p>
+                                    <p class="text-slate-400 text-xs mt-1">Theo khung giờ chuyến bay nội địa</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-3 bg-slate-900/50 rounded-lg border border-slate-700">
+                            <div class="flex items-start gap-2 mb-2">
+                                <i class="fa-solid fa-star text-goldaccent text-xs sm:text-sm mt-0.5 flex-shrink-0"></i>
+                                <div class="min-w-0">
+                                    <h4 class="text-white font-semibold text-xs mb-1">Tiện ích</h4>
+                                    <ul class="text-slate-300 text-xs space-y-1">
+                                        <li>• Không gian ngắm đường băng & núi non</li>
+                                        <li>• Buffet Á-Âu & trà/cà phê Đà Lạt</li>
+                                        <li>• WiFi tốc độ cao & sạc điện thoại</li>
+                                        <li>• Phòng vệ sinh sạch sẽ & ghế ngồi thoải mái</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('actionModal');
+            modal.classList.add('hidden');
+        }
+
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('actionModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
