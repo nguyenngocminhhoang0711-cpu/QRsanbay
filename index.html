@@ -20,7 +20,6 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
-        /* Hiển thị ảnh full chiều rộng, tự động co giãn sắc nét */
         .poster-container {
             width: 100%;
             background: #050b14;
@@ -30,60 +29,59 @@
         }
         .poster-container img {
             width: 100%;
-            max-width: 600px; /* Giới hạn khung tối đa trên máy tính, trên mobile tự động tràn 100% */
+            max-width: 600px;
             height: auto;
             display: block;
             object-fit: contain;
         }
-        /* Thanh nút bấm cố định ở đáy màn hình giúp khách hàng thao tác nhanh */
+        /* Thanh nút bấm cố định cao cấp ở đáy màn hình */
         .bottom-action-bar {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
             background: rgba(5, 11, 20, 0.95);
-            backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(229, 193, 88, 0.3);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(229, 193, 88, 0.35);
             padding: 10px 12px;
             z-index: 50;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 -10px 25px rgba(0,0,0,0.6);
+        }
+        .gold-border-glow {
+            border: 1px solid rgba(229, 193, 88, 0.4);
         }
     </style>
 </head>
-<body class="pb-24">
+<body class="pb-28">
 
-    <!-- Ảnh poster dọc hiển thị full trọn vẹn khi quét QR -->
+    <!-- Ảnh poster hiển thị trực diện, sắc nét -->
     <main class="poster-container">
-        <!-- Đảm bảo file ảnh dọc của bạn trên GitHub tên là banner.jpg -->
         <img src="banner.jpg" alt="MobiFone VIP Lounge - Sân Bay Liên Khương" />
     </main>
 
-    <!-- Thanh tác vụ nhanh nằm ở đáy màn hình -->
+    <!-- Thanh tác vụ nhanh đẳng cấp bên dưới -->
     <nav class="bottom-action-bar">
         <div class="max-w-md mx-auto grid grid-cols-3 gap-2">
-            <!-- Nút Quy Trình Vào -->
             <button onclick="openActionModal('guideline')" class="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-gradient-to-b from-blue-700 to-blue-900 text-white shadow-lg active:scale-95 border border-blue-400/30">
                 <i class="fa-solid fa-id-card text-yellow-300 text-sm mb-1"></i>
                 <span class="text-[10px] font-bold tracking-tight">Quy Trình Vào</span>
             </button>
 
-            <!-- Nút Thông Tin Phòng Chờ -->
             <button onclick="openActionModal('loungeInfo')" class="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-gradient-to-b from-amber-600 to-amber-800 text-white shadow-lg active:scale-95 border border-amber-400/40">
                 <i class="fa-solid fa-mug-hot text-yellow-200 text-sm mb-1"></i>
                 <span class="text-[10px] font-bold tracking-tight">Phòng Chờ DLI</span>
             </button>
 
-            <!-- Nút Gọi Tổng Đài VIP -->
-            <a href="tel:0937509888" class="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-gradient-to-b from-slate-800 to-slate-900 text-white shadow-lg active:scale-95 border border-yellow-500/40">
+            <a href="tel:0937509888" class="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-gradient-to-b from-slate-800 to-slate-900 text-white shadow-lg active:scale-95 gold-border-glow">
                 <i class="fa-solid fa-headset text-yellow-300 text-sm mb-1"></i>
                 <span class="text-[10px] font-bold tracking-tight text-yellow-300">Tổng Đài VIP</span>
             </a>
         </div>
     </nav>
 
-    <!-- Hộp thoại Modal hiển thị thông tin chi tiết -->
+    <!-- Modal hiển thị thông tin -->
     <div id="actionModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-[#0b132b] border border-yellow-500/40 w-full max-w-sm rounded-2xl p-5 shadow-2xl relative">
+        <div class="bg-[#0b132b] gold-border-glow w-full max-w-sm rounded-2xl p-5 shadow-2xl relative">
             <button onclick="closeActionModal()" class="absolute top-3 right-3 text-slate-400 hover:text-white text-base w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center">
                 <i class="fa-solid fa-xmark"></i>
             </button>
@@ -91,8 +89,14 @@
         </div>
     </div>
 
-    <!-- JavaScript xử lý hiển thị Modal -->
     <script>
+        // Tự động cuộn nhẹ 1 pixel khi vừa mở trang để trình duyệt ẩn thanh URL lập tức
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                window.scrollTo(0, 1);
+            }, 0);
+        });
+
         function openActionModal(type) {
             const modal = document.getElementById('actionModal');
             const content = document.getElementById('modalContent');
