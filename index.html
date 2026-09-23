@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MobiFone VIP Lounge - Sân Bay Liên Khương (Đà Lạt)</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -41,21 +41,20 @@
             border: 1px solid rgba(229, 193, 88, 0.35);
             box-shadow: 0 0 15px rgba(229, 193, 88, 0.1);
         }
-        /* Khung cuộn ngang thông minh cho ảnh khổ ngang trên điện thoại dọc */
-        .pan-container {
+        /* Khu vực cuộn dọc mượt mà dành riêng cho ảnh dọc */
+        .vertical-container {
             position: relative;
             width: 100%;
             height: 100%;
-            overflow: auto;
+            overflow-y: auto;
             -webkit-overflow-scrolling: touch;
-            background: #000;
+            background: #070d1b;
             display: flex;
-            align-items: center;
+            justify-content: center;
         }
-        .pan-container img {
-            height: 100%;
-            width: auto;
-            max-width: none;
+        .vertical-container img {
+            width: 100%;
+            height: auto;
             display: block;
             object-fit: contain;
         }
@@ -79,9 +78,9 @@
         </div>
     </header>
 
-    <!-- Main Content: Hiển thị ảnh ngang chuẩn xác, cho phép vuốt ngang xem trọn vẹn -->
-    <main class="w-full flex-1 pan-container">
-        <!-- Đảm bảo tên file ảnh banner.jpg khớp với ảnh bạn upload lên GitHub -->
+    <!-- Main Content: Hiển thị ảnh dọc full màn hình điện thoại -->
+    <main class="w-full flex-1 vertical-container">
+        <!-- Đảm bảo banner.jpg là ảnh khổ dọc -->
         <img src="banner.jpg" alt="MobiFone VIP Airport Lounge Lien Khuong - Design by Ho Kiet" />
     </main>
 
