@@ -3,264 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MobiFone VIP - Phòng Chờ Sân Bay Liên Khương</title>
+    <title>MobiFone VIP Lounge - Sân Bay Liên Khương (Đà Lạt)</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        mobiblue: '#003f87',
-                        mobired: '#d32f2f',
-                        goldaccent: '#c99a3f',
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'sans-serif'],
+                        mobiblue: '#003366',
+                        mobired: '#d91424',
+                        goldaccent: '#e5c158',
+                        goldlight: '#f9e7a8',
+                        luxurybg: '#070d1b',
                     }
                 }
             }
         }
     </script>
     <style>
-        * {
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050b14;
+            color: #f8fafc;
             -webkit-tap-highlight-color: transparent;
         }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
-            color: #e0e0e0;
-        }
+        /* Custom scrollbar thanh lịch */
         ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
+            width: 3px;
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(201, 154, 63, 0.3);
-            border-radius: 3px;
+            background: linear-gradient(to bottom, #d4af37, #9a7b20);
+            border-radius: 4px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(201, 154, 63, 0.5);
-        }
-        .smooth-transition {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .modal-backdrop {
-            animation: backdropFade 0.3s ease-out;
-        }
-        @keyframes backdropFade {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .modal-content {
-            animation: slideUp 0.3s ease-out;
-        }
-        @keyframes slideUp {
-            from { 
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to { 
-                transform: translateY(0);
-                opacity: 1;
-            }
+        /* Hiệu ứng viền ánh kim hoàng gia */
+        .gold-border-glow {
+            border: 1px solid rgba(229, 193, 88, 0.35);
+            box-shadow: 0 0 15px rgba(229, 193, 88, 0.1);
         }
     </style>
 </head>
-<body class="h-dvh flex flex-col overflow-hidden">
+<body class="min-h-screen flex flex-col items-center justify-between antialiased selection:bg-goldaccent selection:text-black">
 
-    <!-- Header -->
-    <header class="bg-mobiblue/95 backdrop-blur border-b border-goldaccent/20 px-3 sm:px-4 py-2.5 sm:py-3 sticky top-0 z-50 shadow-lg">
-        <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2 sm:gap-3 min-w-0">
-                <div class="w-9 sm:w-10 h-9 sm:h-10 rounded-lg bg-goldaccent/10 border border-goldaccent/30 flex items-center justify-center flex-shrink-0">
-                    <span class="font-bold text-goldaccent text-xs sm:text-sm">M</span>
-                </div>
-                <div class="min-w-0">
-                    <h1 class="text-white font-semibold text-sm sm:text-base leading-tight truncate">MobiFone VIP</h1>
-                    <p class="text-goldaccent/70 text-xs truncate">Liên Khương Airport</p>
-                </div>
+    <!-- Top Header Banner Sang Trọng -->
+    <header class="w-full max-w-md bg-gradient-to-r from-[#020b1c] via-[#002855] to-[#020b1c] px-4 py-3 flex items-center justify-between border-b border-goldaccent/30 shadow-2xl sticky top-0 z-50 backdrop-blur-md">
+        <div class="flex items-center space-x-2.5">
+            <div class="bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-600 text-black px-2 py-0.5 rounded text-[10px] font-black tracking-widest uppercase shadow-md flex items-center gap-1">
+                <i class="fa-solid fa-signal text-[9px]"></i> 5G MOBIFONE
             </div>
-            <div class="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-goldaccent/10 border border-goldaccent/20 flex-shrink-0">
-                <i class="fa-solid fa-crown text-goldaccent text-xs"></i>
-                <span class="text-white font-medium text-xs whitespace-nowrap">Premium</span>
-            </div>
+            <span class="text-xs font-medium tracking-wide text-slate-200 flex items-center gap-1">
+                <i class="fa-solid fa-location-dot text-goldaccent"></i> Liên Khương (DLI)
+            </span>
+        </div>
+        <div class="flex items-center space-x-1.5 text-goldaccent text-[11px] font-semibold bg-black/40 px-3 py-1 rounded-full gold-border-glow">
+            <i class="fa-solid fa-crown text-yellow-400 animate-pulse"></i>
+            <span class="tracking-wider">VIP LOUNGE</span>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex-1 flex flex-col bg-gradient-to-b from-slate-900 to-slate-950">
-        
-        <!-- Location Badge -->
-        <div class="bg-gradient-to-r from-mobiblue/30 to-slate-900/30 backdrop-blur-sm px-3 sm:px-4 py-2 sm:py-2.5 text-center border-b border-mobiblue/20">
-            <div class="flex items-center justify-center gap-2 text-xs sm:text-sm text-slate-300 flex-wrap">
-                <i class="fa-solid fa-plane text-goldaccent text-sm flex-shrink-0"></i>
-                <span class="truncate">SH Premium Lounge • Ga Quốc Nội • Tầng 2</span>
-            </div>
+    <!-- Main Content Container (Thiết kế Canva tối ưu hiển thị) -->
+    <main class="w-full max-w-md flex-1 flex flex-col bg-[#0b132b] relative shadow-2xl">
+        <!-- Banner thông báo vị trí tinh tế -->
+        <div class="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-950 px-4 py-2.5 text-center text-[11px] text-slate-300 border-b border-goldaccent/20 flex items-center justify-center space-x-2 shadow-inner">
+            <i class="fa-solid fa-plane-departure text-goldaccent text-xs"></i>
+            <span>Đặc quyền Hội viên hạng cao tại <strong class="text-goldaccent font-semibold">SH Premium Lounge (Ga Quốc Nội)</strong></span>
         </div>
 
-        <!-- Canva Embed -->
-        <div class="flex-1 relative w-full" style="min-height: 400px;">
+        <!-- Khung nhúng Canva mượt mà, không bị che khuất nội dung -->
+        <div class="relative w-full flex-grow overflow-y-auto bg-[#070d1b] min-h-[580px]">
             <iframe loading="lazy" 
-                class="w-full h-full border-0"
+                class="w-full h-full border-0 min-h-[650px]"
                 src="https://www.canva.com/design/DAHVatdxLwU/FX4zhnbdfvEpKJwOt0NP9w/view?embed" 
                 allowfullscreen="allowfullscreen" 
                 allow="fullscreen"
-                title="MobiFone VIP Lounge Design">
+                title="MobiFone VIP Airport Lounge Lien Khuong - Design by Ho Kiet">
             </iframe>
         </div>
     </main>
 
-    <!-- Action Bar -->
-    <nav class="bg-slate-900/98 backdrop-blur border-t border-slate-800 px-3 sm:px-4 py-3 sm:py-4 shadow-2xl">
-        <div class="w-full">
-            <div class="grid grid-cols-3 gap-2 sm:gap-3 mb-3">
-                <!-- Check-in Guide Button -->
-                <button onclick="openModal('guideline')" class="smooth-transition group flex flex-col items-center justify-center gap-1.5 sm:gap-2 p-2.5 sm:p-3 rounded-xl bg-gradient-to-br from-mobiblue/20 to-mobiblue/10 hover:from-mobiblue/30 hover:to-mobiblue/20 border border-mobiblue/30 hover:border-mobiblue/50 active:scale-95 min-h-[80px] sm:min-h-[90px]">
-                    <div class="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-mobiblue/30 flex items-center justify-center group-hover:bg-mobiblue/40 smooth-transition">
-                        <i class="fa-solid fa-circle-check text-goldaccent text-xs sm:text-sm"></i>
-                    </div>
-                    <span class="text-white font-semibold text-xs sm:text-sm text-center leading-tight line-clamp-2">Quy Trình<br class="hidden sm:block" />Check-in</span>
-                </button>
+    <!-- Quick Action Sticky Bar (Nút thao tác nhanh quyền lực) -->
+    <nav class="w-full max-w-md bg-[#050b14]/95 backdrop-blur-xl border-t border-goldaccent/30 p-3 shadow-2xl z-40">
+        <div class="grid grid-cols-3 gap-2.5">
+            <!-- Nút Hướng Dẫn Check-in -->
+            <button onclick="openActionModal('guideline')" class="flex flex-col items-center justify-center p-2 rounded-xl bg-gradient-to-b from-blue-700 to-blue-900 hover:from-blue-600 hover:to-blue-800 text-white shadow-lg transition-all active:scale-95 border border-blue-400/30 group">
+                <i class="fa-solid fa-id-card text-goldaccent text-base mb-1 group-hover:scale-110 transition-transform"></i>
+                <span class="text-[11px] font-bold tracking-tight text-slate-100">Quy Trình Vào</span>
+            </button>
 
-                <!-- Lounge Info Button -->
-                <button onclick="openModal('loungeInfo')" class="smooth-transition group flex flex-col items-center justify-center gap-1.5 sm:gap-2 p-2.5 sm:p-3 rounded-xl bg-gradient-to-br from-amber-600/20 to-amber-600/10 hover:from-amber-600/30 hover:to-amber-600/20 border border-amber-600/30 hover:border-amber-600/50 active:scale-95 min-h-[80px] sm:min-h-[90px]">
-                    <div class="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-amber-600/30 flex items-center justify-center group-hover:bg-amber-600/40 smooth-transition">
-                        <i class="fa-solid fa-info text-goldaccent text-xs sm:text-sm"></i>
-                    </div>
-                    <span class="text-white font-semibold text-xs sm:text-sm text-center leading-tight line-clamp-2">Thông Tin<br class="hidden sm:block" />Phòng Chờ</span>
-                </button>
+            <!-- Nút Thông Tin Phòng Chờ -->
+            <button onclick="openActionModal('loungeInfo')" class="flex flex-col items-center justify-center p-2 rounded-xl bg-gradient-to-b from-amber-600 to-amber-800 hover:from-amber-500 hover:to-amber-700 text-white shadow-lg transition-all active:scale-95 border border-amber-400/40 group">
+                <i class="fa-solid fa-mug-hot text-yellow-200 text-base mb-1 group-hover:scale-110 transition-transform"></i>
+                <span class="text-[11px] font-bold tracking-tight text-slate-100">Phòng Chờ DLI</span>
+            </button>
 
-                <!-- Support Button -->
-                <a href="tel:18001090" class="smooth-transition group flex flex-col items-center justify-center gap-1.5 sm:gap-2 p-2.5 sm:p-3 rounded-xl bg-gradient-to-br from-slate-700/40 to-slate-700/20 hover:from-slate-700/60 hover:to-slate-700/40 border border-slate-700/40 hover:border-slate-600/60 active:scale-95 min-h-[80px] sm:min-h-[90px]">
-                    <div class="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-slate-700/40 flex items-center justify-center group-hover:bg-slate-700/60 smooth-transition">
-                        <i class="fa-solid fa-headset text-goldaccent text-xs sm:text-sm"></i>
-                    </div>
-                    <span class="text-white font-semibold text-xs sm:text-sm text-center leading-tight line-clamp-2">1800<br class="hidden sm:block" />.1090</span>
-                </a>
-            </div>
-            
-            <!-- Footer Info -->
-            <div class="text-center pt-2 sm:pt-3 border-t border-slate-800">
-                <p class="text-slate-500 text-xs font-light tracking-wide">MobiFone VIP Lounge Liên Khương • Lâm Đồng</p>
-            </div>
+            <!-- Nút Gọi Tổng Đài VIP -->
+            <a href="tel:0937509888" class="flex flex-col items-center justify-center p-2 rounded-xl bg-gradient-to-b from-slate-800 to-slate-900 hover:from-slate-700 hover:to-slate-800 text-white shadow-lg transition-all active:scale-95 gold-border-glow group">
+                <i class="fa-solid fa-headset text-goldaccent text-base mb-1 group-hover:scale-110 transition-transform"></i>
+                <span class="text-[11px] font-bold tracking-tight text-goldaccent">Tổng Đài VIP</span>
+            </a>
+        </div>
+        <div class="text-center mt-2.5">
+            <span class="text-[9px] text-slate-400 font-light tracking-wider uppercase">MobiFone Airport Lounge - Liên Khương &bull; Design by Ho Kiet</span>
         </div>
     </nav>
 
-    <!-- Modal -->
-    <div id="actionModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4 modal-backdrop">
-        <div class="bg-slate-800 border border-slate-700 w-full max-w-sm sm:max-w-md rounded-2xl shadow-2xl overflow-hidden modal-content max-h-[90vh] flex flex-col">
-            <!-- Modal Header -->
-            <div class="bg-gradient-to-r from-mobiblue/20 to-slate-800 px-4 sm:px-5 py-3 sm:py-4 border-b border-slate-700 flex items-center justify-between flex-shrink-0">
-                <div id="modalTitle" class="flex items-center gap-2 min-w-0">
-                    <i class="fa-solid fa-circle-check text-goldaccent flex-shrink-0"></i>
-                    <h2 class="text-white font-semibold text-sm sm:text-base truncate">Modal Title</h2>
-                </div>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-white smooth-transition w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-700/50 flex-shrink-0 ml-2">
-                    <i class="fa-solid fa-xmark text-sm"></i>
-                </button>
-            </div>
-            
-            <!-- Modal Content -->
-            <div id="modalContent" class="p-4 sm:p-5 overflow-y-auto flex-1 text-sm sm:text-base">
-                <!-- Dynamic content -->
+    <!-- Interactive Luxury Modal Container -->
+    <div id="actionModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 transition-all">
+        <div class="bg-[#0b132b] gold-border-glow w-full max-w-sm rounded-2xl p-5 shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            <button onclick="closeActionModal()" class="absolute top-3 right-3 text-slate-400 hover:text-white text-base w-8 h-8 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modalContent" class="text-slate-200">
+                <!-- Nội dung modal động hiển thị chi tiết cho khách hàng VIP -->
             </div>
         </div>
     </div>
 
+    <!-- JavaScript xử lý Modal -->
     <script>
-        function openModal(type) {
+        function openActionModal(type) {
             const modal = document.getElementById('actionModal');
-            const title = document.getElementById('modalTitle');
             const content = document.getElementById('modalContent');
             
             if (type === 'guideline') {
-                title.innerHTML = `
-                    <i class="fa-solid fa-circle-check text-goldaccent"></i>
-                    <h2 class="text-white font-semibold text-sm sm:text-base">Quy Trình Check-in</h2>
-                `;
                 content.innerHTML = `
-                    <p class="text-slate-300 text-xs sm:text-sm mb-4 leading-relaxed">
-                        Những bước để vào phòng chờ VIP dành cho Hội viên Kết Nối Dài Lâu tại Liên Khương.
-                    </p>
-                    <div class="space-y-3">
-                        <div class="flex gap-3">
-                            <div class="flex-shrink-0">
-                                <div class="flex h-7 sm:h-8 w-7 sm:w-8 items-center justify-center rounded-full bg-mobiblue text-white font-semibold text-xs sm:text-sm">1</div>
-                            </div>
-                            <div class="min-w-0">
-                                <h4 class="text-white font-semibold text-xs sm:text-sm mb-0.5">Xuất trình thẻ</h4>
-                                <p class="text-slate-400 text-xs leading-relaxed">Cung cấp Boarding Pass và mã QR hội viên từ app My MobiFone cho nhân viên quầy tiếp.</p>
-                            </div>
+                    <div class="text-center mb-4">
+                        <div class="w-12 h-12 bg-blue-600/20 border border-goldaccent/40 rounded-full flex items-center justify-center mx-auto mb-2 text-goldaccent text-xl shadow-inner">
+                            <i class="fa-solid fa-ticket"></i>
                         </div>
-                        <div class="flex gap-3">
-                            <div class="flex-shrink-0">
-                                <div class="flex h-7 sm:h-8 w-7 sm:w-8 items-center justify-center rounded-full bg-mobiblue text-white font-semibold text-xs sm:text-sm">2</div>
-                            </div>
-                            <div class="min-w-0">
-                                <h4 class="text-white font-semibold text-xs sm:text-sm mb-0.5">Xác thực hạng thẻ</h4>
-                                <p class="text-slate-400 text-xs leading-relaxed">Nhân viên kiểm tra hạng Titan, Vàng, hoặc Kim Cương và xác nhận quyền hưởng dịch vụ.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-3">
-                            <div class="flex-shrink-0">
-                                <div class="flex h-7 sm:h-8 w-7 sm:w-8 items-center justify-center rounded-full bg-goldaccent text-black font-semibold text-xs sm:text-sm">3</div>
-                            </div>
-                            <div class="min-w-0">
-                                <h4 class="text-white font-semibold text-xs sm:text-sm mb-0.5">Tận hưởng dịch vụ</h4>
-                                <p class="text-slate-400 text-xs leading-relaxed">Vào phòng chờ, thư giãn với buffet, trà/cà phê, và WiFi tốc độ cao cho đến giờ bay.</p>
-                            </div>
-                        </div>
+                        <h3 class="text-base font-bold text-white tracking-wide">QUY TRÌNH VÀO PHÒNG CHỜ VIP</h3>
+                        <p class="text-[11px] text-slate-400 mt-1">Dành riêng cho Hội viên Kết Nối Dài Lâu (Titan, Vàng, Kim Cương).</p>
                     </div>
-                    <div class="mt-4 p-3 bg-slate-900/50 rounded-lg border border-slate-700">
-                        <p class="text-slate-300 text-xs"><span class="font-semibold text-goldaccent">Lưu ý:</span> Vui lòng đến sân bay ít nhất 2 giờ trước giờ cất cánh.</p>
+                    <div class="space-y-2.5 text-xs">
+                        <div class="bg-[#070d1b] p-3 rounded-xl border border-slate-800 flex items-start space-x-2.5">
+                            <span class="bg-blue-600 text-white font-bold w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] shadow">1</span>
+                            <div>
+                                <strong class="text-white block mb-0.5">Xuất trình Thẻ lên máy bay</strong>
+                                <span class="text-slate-300 text-[11px]">Chuẩn bị Boarding Pass chuyến bay xuất phát từ Liên Khương.</span>
+                            </div>
+                        </div>
+                        <div class="bg-[#070d1b] p-3 rounded-xl border border-slate-800 flex items-start space-x-2.5">
+                            <span class="bg-blue-600 text-white font-bold w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] shadow">2</span>
+                            <div>
+                                <strong class="text-white block mb-0.5">Mở mã QR trên My MobiFone</strong>
+                                <span class="text-slate-300 text-[11px]">Truy cập ứng dụng, lấy mã QR hội viên hạng cao tương ứng.</span>
+                            </div>
+                        </div>
+                        <div class="bg-[#070d1b] p-3 rounded-xl border border-slate-800 flex items-start space-x-2.5">
+                            <span class="bg-goldaccent text-black font-bold w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] shadow">3</span>
+                            <div>
+                                <strong class="text-goldaccent block mb-0.5">Xác nhận & Thư giãn</strong>
+                                <span class="text-slate-300 text-[11px]">Lễ tân quét mã hệ thống và mời Quý khách vào không gian VIP thưởng thức tiện ích.</span>
+                            </div>
+                        </div>
                     </div>
                 `;
             } else if (type === 'loungeInfo') {
-                title.innerHTML = `
-                    <i class="fa-solid fa-info text-goldaccent"></i>
-                    <h2 class="text-white font-semibold text-sm sm:text-base">Thông Tin Phòng Chờ</h2>
-                `;
                 content.innerHTML = `
-                    <h3 class="text-white font-semibold text-xs sm:text-sm mb-4">SH Premium Lounge Liên Khương</h3>
-                    <div class="space-y-3">
-                        <div class="p-3 bg-slate-900/50 rounded-lg border border-slate-700">
-                            <div class="flex items-start gap-2 mb-2">
-                                <i class="fa-solid fa-map-pin text-goldaccent text-xs sm:text-sm mt-0.5 flex-shrink-0"></i>
-                                <div class="min-w-0">
-                                    <h4 class="text-white font-semibold text-xs mb-1">Vị trí</h4>
-                                    <p class="text-slate-300 text-xs leading-relaxed">Tầng 2, Khu cách ly ga đi quốc nội, cửa ra tàu bay số 1 & 2, HKQT Liên Khương.</p>
-                                </div>
-                            </div>
+                    <div class="text-center mb-4">
+                        <div class="w-12 h-12 bg-amber-600/20 border border-goldaccent/40 rounded-full flex items-center justify-center mx-auto mb-2 text-goldaccent text-xl shadow-inner">
+                            <i class="fa-solid fa-plane-departure"></i>
                         </div>
-                        
-                        <div class="p-3 bg-slate-900/50 rounded-lg border border-slate-700">
-                            <div class="flex items-start gap-2 mb-2">
-                                <i class="fa-solid fa-clock text-goldaccent text-xs sm:text-sm mt-0.5 flex-shrink-0"></i>
-                                <div class="min-w-0">
-                                    <h4 class="text-white font-semibold text-xs mb-1">Giờ phục vụ</h4>
-                                    <p class="text-slate-300 text-xs">05:30 – 21:00 hàng ngày</p>
-                                    <p class="text-slate-400 text-xs mt-1">Theo khung giờ chuyến bay nội địa</p>
-                                </div>
-                            </div>
+                        <h3 class="text-base font-bold text-white tracking-wide">SH PREMIUM LOUNGE</h3>
+                        <p class="text-[11px] text-slate-400 mt-1">Cảng hàng không quốc tế Liên Khương (Lâm Đồng)</p>
+                    </div>
+                    <div class="space-y-2.5 text-xs">
+                        <div class="bg-[#070d1b] p-3 rounded-xl border border-slate-800">
+                            <span class="text-goldaccent block font-semibold mb-0.5"><i class="fa-solid fa-location-dot mr-1"></i> Vị trí phòng chờ:</span>
+                            <span class="text-slate-300 text-[11px]">Tầng 2, Khu vực cách ly ga đi quốc nội (Gần cửa ra tàu bay số 1 và số 2).</span>
                         </div>
-                        
-                        <div class="p-3 bg-slate-900/50 rounded-lg border border-slate-700">
-                            <div class="flex items-start gap-2 mb-2">
-                                <i class="fa-solid fa-star text-goldaccent text-xs sm:text-sm mt-0.5 flex-shrink-0"></i>
-                                <div class="min-w-0">
-                                    <h4 class="text-white font-semibold text-xs mb-1">Tiện ích</h4>
-                                    <ul class="text-slate-300 text-xs space-y-1">
-                                        <li>• Không gian ngắm đường băng & núi non</li>
-                                        <li>• Buffet Á-Âu & trà/cà phê Đà Lạt</li>
-                                        <li>• WiFi tốc độ cao & sạc điện thoại</li>
-                                        <li>• Phòng vệ sinh sạch sẽ & ghế ngồi thoải mái</li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="bg-[#070d1b] p-3 rounded-xl border border-slate-800">
+                            <span class="text-goldaccent block font-semibold mb-0.5"><i class="fa-solid fa-clock mr-1"></i> Thời gian phục vụ:</span>
+                            <span class="text-slate-300 text-[11px]">05:30 – 21:00 hàng ngày (Linh hoạt theo lịch trình các chuyến bay đi).</span>
+                        </div>
+                        <div class="bg-[#070d1b] p-3 rounded-xl border border-slate-800">
+                            <span class="text-goldaccent block font-semibold mb-0.5"><i class="fa-solid fa-gem mr-1"></i> Tiện ích thượng hạng:</span>
+                            <span class="text-slate-300 text-[11px]">Không gian ngắm đồi thông/sân bay, buffet Á- Âu đa dạng, trà cà phê đặc sản Đà Lạt, wifi tốc độ cao miễn phí.</span>
                         </div>
                     </div>
                 `;
@@ -269,23 +191,17 @@
             modal.classList.remove('hidden');
         }
 
-        function closeModal() {
+        function closeActionModal() {
             const modal = document.getElementById('actionModal');
             modal.classList.add('hidden');
         }
 
-        window.addEventListener('click', (e) => {
+        window.onclick = function(event) {
             const modal = document.getElementById('actionModal');
-            if (e.target === modal) {
-                closeModal();
+            if (event.target === modal) {
+                closeActionModal();
             }
-        });
-
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
+        }
     </script>
 </body>
 </html>
