@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>MobiFone VIP Lounge - Sân Bay Liên Khương (Đà Lạt)</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -41,21 +41,21 @@
             border: 1px solid rgba(229, 193, 88, 0.35);
             box-shadow: 0 0 15px rgba(229, 193, 88, 0.1);
         }
-        /* Khu vực hiển thị ảnh tối ưu không gian */
-        .image-container {
+        /* Khung cuộn ngang thông minh cho ảnh khổ ngang trên điện thoại dọc */
+        .pan-container {
             position: relative;
             width: 100%;
             height: 100%;
-            overflow-y: auto;
+            overflow: auto;
             -webkit-overflow-scrolling: touch;
             background: #000;
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
+            align-items: center;
         }
-        .image-container img {
-            width: 100%;
-            height: auto;
+        .pan-container img {
+            height: 100%;
+            width: auto;
+            max-width: none;
             display: block;
             object-fit: contain;
         }
@@ -79,9 +79,9 @@
         </div>
     </header>
 
-    <!-- Main Content: Hiển thị trực tiếp ảnh thiết kế -->
-    <main class="w-full flex-1 image-container">
-        <!-- Thay chữ "banner.jpg" bằng tên file ảnh hoặc link ảnh của bạn -->
+    <!-- Main Content: Hiển thị ảnh ngang chuẩn xác, cho phép vuốt ngang xem trọn vẹn -->
+    <main class="w-full flex-1 pan-container">
+        <!-- Đảm bảo tên file ảnh banner.jpg khớp với ảnh bạn upload lên GitHub -->
         <img src="banner.jpg" alt="MobiFone VIP Airport Lounge Lien Khuong - Design by Ho Kiet" />
     </main>
 
@@ -169,15 +169,15 @@
                     <div class="space-y-2.5 text-xs">
                         <div class="bg-[#070d1b] p-3 rounded-xl border border-slate-800">
                             <span class="text-goldaccent block font-semibold mb-0.5"><i class="fa-solid fa-location-dot mr-1"></i> Vị trí phòng chờ:</span>
-                            <span class="text-slate-300 text-[11px]">Tầng 2, Khu vực cách ly ga đi quốc nội (Gần cửa ra tàu bay số 1 & 2).</span>
+                            <span class="text-slate-300 text-[11px]">Tầng 2, Khu vực cách ly ga đi quốc nội (Ga đi quốc nội Liên Khương).</span>
                         </div>
                         <div class="bg-[#070d1b] p-3 rounded-xl border border-slate-800">
                             <span class="text-goldaccent block font-semibold mb-0.5"><i class="fa-solid fa-clock mr-1"></i> Thời gian phục vụ:</span>
-                            <span class="text-slate-300 text-[11px]">05:30 – 21:00 hàng ngày (Linh hoạt theo lịch trình chuyến bay).</span>
+                            <span class="text-slate-300 text-[11px]">05:30 – 21:00 hàng ngày.</span>
                         </div>
                         <div class="bg-[#070d1b] p-3 rounded-xl border border-slate-800">
                             <span class="text-goldaccent block font-semibold mb-0.5"><i class="fa-solid fa-gem mr-1"></i> Tiện ích thượng hạng:</span>
-                            <span class="text-slate-300 text-[11px]">Không gian ngắm đồi thông, buffet Á - Âu, trà cà phê Đà Lạt, wifi tốc độ cao.</span>
+                            <span class="text-slate-300 text-[11px]">Buffet Á - Âu, trà cà phê đặc sản Đà Lạt, không gian ngắm máy bay sang trọng.</span>
                         </div>
                     </div>
                 `;
