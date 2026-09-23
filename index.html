@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MobiFone VIP Lounge - Sân Bay Liên Khương (Đà Lạt)</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -41,23 +41,23 @@
             border: 1px solid rgba(229, 193, 88, 0.35);
             box-shadow: 0 0 15px rgba(229, 193, 88, 0.1);
         }
-        /* Khung chứa thiết kế ngang, cho phép lướt ngang/dọc mượt mà trên mobile */
-        .landscape-container {
+        /* Khu vực hiển thị ảnh tối ưu không gian */
+        .image-container {
             position: relative;
             width: 100%;
             height: 100%;
-            overflow: auto;
+            overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             background: #000;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: flex-start;
         }
-        .landscape-container iframe {
-            min-width: 750px; /* Đảm bảo hiện đủ chiều rộng khổ ngang trên mobile */
+        .image-container img {
             width: 100%;
-            height: 100%;
-            border: none;
+            height: auto;
+            display: block;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -79,27 +79,28 @@
         </div>
     </header>
 
-    <!-- Main Content: Tối ưu cho thiết kế ngang của Canva -->
-    <main class="w-full flex-1 landscape-container">
-        <iframe loading="lazy" 
-            src="https://www.canva.com/design/DAHVatdxLwU/FX4zhnbdfvEpKJwOt0NP9w/view?embed" 
-            allowfullscreen="allowfullscreen" 
-            allow="fullscreen"
-            title="MobiFone VIP Airport Lounge Lien Khuong - Design by Ho Kiet">
-        </iframe>
+    <!-- Main Content: Hiển thị trực tiếp ảnh thiết kế -->
+    <main class="w-full flex-1 image-container">
+        <!-- Thay chữ "banner.jpg" bằng tên file ảnh hoặc link ảnh của bạn -->
+        <img src="banner.jpg" alt="MobiFone VIP Airport Lounge Lien Khuong - Design by Ho Kiet" />
     </main>
 
     <!-- Quick Action Sticky Bar (Nút thao tác nhanh bên dưới) -->
     <nav class="w-full bg-[#050b14]/95 backdrop-blur-xl border-t border-goldaccent/30 p-2 shadow-2xl z-40 flex-shrink-0">
         <div class="grid grid-cols-3 gap-2">
+            <!-- Nút Hướng Dẫn Check-in -->
             <button onclick="openActionModal('guideline')" class="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-gradient-to-b from-blue-700 to-blue-900 text-white shadow-lg active:scale-95 border border-blue-400/30">
                 <i class="fa-solid fa-id-card text-goldaccent text-sm mb-0.5"></i>
                 <span class="text-[10px] font-bold tracking-tight">Quy Trình Vào</span>
             </button>
+
+            <!-- Nút Thông Tin Phòng Chờ -->
             <button onclick="openActionModal('loungeInfo')" class="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-gradient-to-b from-amber-600 to-amber-800 text-white shadow-lg active:scale-95 border border-amber-400/40">
                 <i class="fa-solid fa-mug-hot text-yellow-200 text-sm mb-0.5"></i>
                 <span class="text-[10px] font-bold tracking-tight">Phòng Chờ DLI</span>
             </button>
+
+            <!-- Nút Gọi Tổng Đài VIP -->
             <a href="tel:0937509888" class="flex flex-col items-center justify-center py-1.5 px-1 rounded-xl bg-gradient-to-b from-slate-800 to-slate-900 text-white shadow-lg active:scale-95 gold-border-glow">
                 <i class="fa-solid fa-headset text-goldaccent text-sm mb-0.5"></i>
                 <span class="text-[10px] font-bold tracking-tight text-goldaccent">Tổng Đài VIP</span>
